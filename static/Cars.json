@@ -1,0 +1,11 @@
+[
+    {
+        "model": "BMW",
+        "color": "Green",
+        "plate_number": "123",
+        "area": "Area 1",
+        "rent_per_hour": "1",
+        "rent_per_day": "22",
+        "is_booked": false
+    }
+]

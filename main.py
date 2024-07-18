@@ -29,7 +29,7 @@ class Car:
             car_dict = car.to_dict()
             plate_number = car_dict['plate_number']
             
-            with open('Cars.json', 'r+') as f:
+            with open('static/Cars.json', 'r+') as f:
                 cars = json.load(f)
                 for existing_car in cars:
                     if existing_car['plate_number'] == plate_number:
@@ -45,7 +45,7 @@ class Car:
 
      def remove_car():
       plate_number = request.json.get('plate_number')
-      with open('Cars.json', 'r+') as f:
+      with open('static/Cars.json', 'r+') as f:
         cars = json.load(f)
         cars = [car for car in cars if car['plate_number'] != plate_number]
         f.seek(0)
@@ -55,7 +55,7 @@ class Car:
 
      def update_car(car_data):
         plate_number = car_data.get('plate_number')
-        with open('Cars.json', 'r+') as f:
+        with open('static/Cars.json', 'r+') as f:
             cars = json.load(f)
             for car in cars:
                 if car['plate_number'] == plate_number:
@@ -65,7 +65,7 @@ class Car:
             json.dump(cars, f, indent=4)
 
      def book(plate_number):
-        with open('Cars.json', 'r+') as f:
+        with open('static/Cars.json', 'r+') as f:
             cars = json.load(f)
             for car in cars:
                 if car['plate_number'] == plate_number:
@@ -76,7 +76,7 @@ class Car:
             json.dump(cars, f, indent=4)
          
 def check_credentials(username, password):
-    with open('admin.json', 'r') as f:
+    with open('static/admin.json', 'r') as f:
         users = json.load(f)
     user = next((user for user in users if user['username'] == username and user['password'] == password), None)
     return user is not None
@@ -105,7 +105,7 @@ def user_page():
 
 @app.route('/cars', methods=['GET'])
 def get_cars():
-        with open('Cars.json', 'r') as f:
+        with open('static/Cars.json', 'r') as f:
             cars_data = json.load(f)
         return jsonify(cars_data)
 
