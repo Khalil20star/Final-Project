@@ -6,6 +6,6 @@
         "area": "Area 1",
         "rent_per_hour": "1",
         "rent_per_day": "22",
-        "is_booked": false
+        "is_booked": true
     }
 ]

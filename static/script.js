@@ -112,14 +112,24 @@ function fetchCarUpdate() {
             <div class="mb-3">
               <label for="Select_Area" class="form-label h3 p-1">Area</label>
               <select id="Select_Area" class="form-select" name="area" required>
-                <option ${carToUpdate.area==='Area 1' ? 'selected' : ''}>Area 1</option>
-                <option ${carToUpdate.area==='Area 2' ? 'selected' : ''}>Area 2</option>
-                <option ${carToUpdate.area==='Area 3' ? 'selected' : ''}>Area 3</option>
-                <option ${carToUpdate.area==='Area 4' ? 'selected' : ''}>Area 4</option>
-                <option ${carToUpdate.area==='Area 5' ? 'selected' : ''}>Area 5</option>
+                <option ${carToUpdate.area === 'Area 1' ? 'selected' : ''}>Area 1</option>
+                <option ${carToUpdate.area === 'Area 2' ? 'selected' : ''}>Area 2</option>
+                <option ${carToUpdate.area === 'Area 3' ? 'selected' : ''}>Area 3</option>
+                <option ${carToUpdate.area === 'Area 4' ? 'selected' : ''}>Area 4</option>
+                <option ${carToUpdate.area === 'Area 5' ? 'selected' : ''}>Area 5</option>
               </select>
               <div class="invalid-feedback">
                 Please select an area.
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="is_booked" id="booked" value="true" ${carToUpdate.is_booked === true ? 'checked' : ''}>
+                <label class="form-check-label" for="booked">Booked</label>
+              </div>
+              <div class="form-check pt-2">
+                <input class="form-check-input" type="radio" name="is_booked" id="notbooked" value="false" ${carToUpdate.is_booked === false ? 'checked' : ''}>
+                <label class="form-check-label" for="notbooked">Not Booked</label>
               </div>
             </div>
             <div class="price d-flex mb-4 gap-4">
@@ -161,7 +171,8 @@ function fetchCarUpdate() {
               plate_number: carToUpdate.plate_number,
               area: formData.get('area'),
               rent_per_hour: formData.get('rent_per_hour'),
-              rent_per_day: formData.get('rent_per_day')
+              rent_per_day: formData.get('rent_per_day'),
+              is_booked: formData.get('is_booked') === 'true' 
             };
 
             fetch('/update_car', {
