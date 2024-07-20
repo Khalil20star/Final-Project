@@ -82,7 +82,6 @@ fetch('/cars')
       }
     });
 
-    // Add event listeners for carousel control arrows
     const prevButton = document.querySelector('.carousel-control-prev');
     const nextButton = document.querySelector('.carousel-control-next');
 
@@ -206,7 +205,7 @@ fetch('/cars')
       }
     });
 
-    // Add event listeners for carousel control arrows
+
     const prevButton = document.querySelector('.carousel-control-prev');
     const nextButton = document.querySelector('.carousel-control-next');
 
@@ -248,9 +247,9 @@ function bookCar(plateNumber, button) {
     if (data.message) {
       alert('Car booked successfully!');
       button.disabled = true;
-      button.textContent = 'Booked'; // Optionally change button text
+      button.textContent = 'Booked'; 
       button.classList.remove('btn-success');
-      button.classList.add('btn-danger'); // Example: change button color after booking
+      button.classList.add('btn-danger'); 
     } else {
       alert('Error booking car: ' + data.error);
     }

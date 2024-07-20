@@ -1,7 +1,7 @@
 
-var addCar = document.getElementById('addCar');
-var updateCar = document.getElementById('updateCar');
-var removeCar1 = document.getElementById('removeCar');
+let addCar = document.getElementById('addCar');
+let updateCar = document.getElementById('updateCar');
+let removeCar1 = document.getElementById('removeCar');
 const plateNumberInput = document.getElementById('PlateNumber');
 const plateNumberExistsError = document.getElementById('plateNumberExists');
 const PlateInvalid = document.getElementById("PlateInvalid")
