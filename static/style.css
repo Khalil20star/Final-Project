@@ -5,36 +5,25 @@ input::-webkit-inner-spin-button {
 }
 
 h1,h2,h3,label,span,.btn {
-     font-family: "Roboto Condensed", sans-serif;
      font-weight: 900;
 }
 
 p{
-    font-family: "Roboto Condensed", sans-serif;
     font-weight: 400;
+    font-size: 20px;
 }
 
 body{
     background-color: #f0f0f0;
     background-image: url('/static/img/Background.png'); 
     background-size: cover; 
+    font-family: "Roboto Condensed", sans-serif;
 }
 
-#addCar{
+#addCar, #updateCar,#removeCar{
     display: none;
 }
 
-#updateCar{
-    display: none;
-}
-
-#updateCar{
-    display: none;
-}
-
-#removeCar{
-    display: none;
-}
 
 
 .modify-btn2:hover {
@@ -53,10 +42,6 @@ span{
     font-size: 20px;
 }
 
-p{
-    font-size: 20px;
-}
-
 #carCarousel {
     position: relative;
   }
@@ -64,18 +49,24 @@ p{
   .carousel-control-prev,
   .carousel-control-next {
     position: fixed;
+    background-color: red;
     top: 50%;
     transform: translateY(-50%);
-    width: 5%;
-    z-index: 1000; /* Ensure controls are above other content */
+    height: 70px;
+    width: 40px;
+    z-index: 10; 
+    opacity: 100%;
+    border-radius: 15px;
   }
   
   .carousel-control-prev {
-    left: 10px; /* Adjust distance from the left */
+    
+    left: 10px; 
   }
   
   .carousel-control-next {
-    right: 10px; /* Adjust distance from the right */
+    
+    right: 10px; 
   }
 .updateCar{
     width: 100%;

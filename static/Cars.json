@@ -1,11 +1,11 @@
 [
     {
-        "model": "BMW",
-        "color": "Green",
-        "plate_number": "122",
-        "area": "Area 3",
-        "rent_per_hour": "12",
+        "model": "Hyundai Verna",
+        "color": "Blue",
+        "plate_number": "ABC1",
+        "area": "Area 1",
+        "rent_per_hour": "1",
         "rent_per_day": "22",
-        "is_booked": true
+        "is_booked": false
     }
 ]
