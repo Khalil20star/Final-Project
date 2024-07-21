@@ -1,3 +1,4 @@
+// Fetch cars and populate carousel
 fetch('/cars')
   .then(response => response.json())
   .then(data => {
@@ -26,7 +27,6 @@ fetch('/cars')
 
     let carouselItem = document.createElement('div');
     carouselItem.classList.add('carousel-item', 'active');
-
     let cardsInCurrentItem = 0;
 
     data.forEach((car, index) => {
@@ -41,21 +41,11 @@ fetch('/cars')
                 <div class="card-body text-center text-md-left">
                   <h3 class="card-title mb-3">${car.model}</h3>
                   <div class="d-flex flex-column flex-md-row flex-wrap d-flex justify-content-between">
-                    <div class="p-2 info">
-                      <span class="font-weight-bold">Color</span><p> ${car.color}</p>
-                    </div>
-                    <div class="p-2 info">
-                      <span class="font-weight-bold">Plate Number</span><p> ${car.plate_number}</p>
-                    </div>
-                    <div class="p-2 info">
-                      <span class="font-weight-bold">Station</span><p> ${car.area}</p>
-                    </div>
-                    <div class="p-2 info">
-                      <span class="font-weight-bold">Rent Per Hour</span> <p>${car.rent_per_hour}$</p>
-                    </div>
-                    <div class="p-2 info">
-                      <span class="font-weight-bold">Rent Per Day</span> <p>${car.rent_per_day}$</p>
-                    </div>
+                    <div class="p-2 info"><span class="font-weight-bold">Color</span><p>${car.color}</p></div>
+                    <div class="p-2 info"><span class="font-weight-bold">Plate Number</span><p>${car.plate_number}</p></div>
+                    <div class="p-2 info"><span class="font-weight-bold">Station</span><p>${car.area}</p></div>
+                    <div class="p-2 info"><span class="font-weight-bold">Rent Per Hour</span><p>${car.rent_per_hour}$</p></div>
+                    <div class="p-2 info"><span class="font-weight-bold">Rent Per Day</span><p>${car.rent_per_day}$</p></div>
                   </div>
                 </div>
               </div>
@@ -71,7 +61,7 @@ fetch('/cars')
         </div>
       `;
 
-      carouselItem.innerHTML += cardHtml;
+      carouselItem.innerHTML+=cardHtml;
       cardsInCurrentItem++;
 
       if (cardsInCurrentItem === 2 || index === data.length - 1) {
@@ -82,7 +72,6 @@ fetch('/cars')
       }
     });
 
-    // Hide arrows if the number of items is 2 or fewer
     const totalItems = data.length;
     const prevButton = document.querySelector('.carousel-control-prev');
     const nextButton = document.querySelector('.carousel-control-next');
@@ -104,11 +93,17 @@ fetch('/cars')
       const carousel = new bootstrap.Carousel(document.getElementById('carCarousel'));
       carousel.next();
     });
+
+    document.querySelectorAll('.book-btn').forEach(button => {
+      button.addEventListener('click', function () {
+        const plateNumber = this.getAttribute('data-plate-number');
+        bookCar(plateNumber, this);
+      });
+    });
   })
   .catch(error => {
     console.error('Error fetching cars:', error);
   });
-
 
 function bookCar(plateNumber, button) {
   fetch('/book_car', {
@@ -123,6 +118,9 @@ function bookCar(plateNumber, button) {
     if (data.message) {
       alert('Car booked successfully!');
       button.disabled = true;
+      button.textContent = 'Booked'; 
+      button.classList.remove('btn-success');
+      button.classList.add('btn-danger');
     } else {
       alert('Error booking car: ' + data.error);
     }
@@ -131,20 +129,12 @@ function bookCar(plateNumber, button) {
     alert('Error booking car: ' + error.message);
   });
 }
+
 document.addEventListener('DOMContentLoaded', function () {
   const logoutButton = document.getElementById('logoutButton');
 
   logoutButton.addEventListener('click', function () {
     localStorage.removeItem('username');
     window.location.href = '/'; 
-  });
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-const logoutButton = document.getElementById('logoutButton');
-
-  logoutButton.addEventListener('click', function () {
-      localStorage.removeItem('username');
-      window.location.href = '/'; 
   });
 });

@@ -3,9 +3,9 @@
         "model": "Hyundai Verna",
         "color": "Blue",
         "plate_number": "ABC1",
-        "area": "Area 1",
-        "rent_per_hour": "1",
+        "area": "Area 2",
+        "rent_per_hour": "11",
         "rent_per_day": "22",
-        "is_booked": false
+        "is_booked": true
     }
 ]

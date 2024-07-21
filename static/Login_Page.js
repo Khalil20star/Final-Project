@@ -7,10 +7,10 @@ const userRole = document.getElementById('userRole');
 const storedUsername = localStorage.getItem('username');
 
 radioButtons.forEach(function (radio) {
-        radio.addEventListener('click', toggleDiv);
+        radio.addEventListener('click', toggleradioButtons);
 });
 
-    function toggleDiv() {
+    function toggleradioButtons() {
         const option2 = document.querySelector('input[name="role"][value="admin"]');
         if (option2.checked) {
             hiddenLogin.style.display = 'block';

@@ -1,8 +1,10 @@
-from flask import Flask
+from flask import Flask, render_template, jsonify, request, redirect, url_for
+import json
 import routes  
+import utilities
 
 app = Flask(__name__)
-       
+    
 app.add_url_rule('/login', 'login', routes.login, methods=['POST'])
 app.add_url_rule('/', 'home', routes.home)
 app.add_url_rule('/admin_page', 'admin_page', routes.admin_page)
@@ -15,3 +17,5 @@ app.add_url_rule('/book_car', 'book_car_route', routes.book_car_route, methods=[
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
