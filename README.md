@@ -14,13 +14,25 @@ Carness is a web application that allows users to rent cars on a daily or hourly
 
 To get started with Carness, follow these steps:
 
-1. **Clone the repository:**
+Ensure that Python and pip are installed on your system. If not, follow the instructions below based on your operating system:
+
+Download the Python installer from the official Python website.
+Run the installer, making sure to check the option to "Add Python to PATH".
+Verify the installation by running:
+
+1. **Install Python and pip**
+    ```bash
+    python --version
+    pip --version
+    ```
+
+2. **Clone the repository:**
     ```bash
     git clone https://github.com/Khalil20star/Final-Project.git
     cd Final-Project
     ```
 
-2. **Run the application:**
+3. **Run the application:**
      Start the backend server:
       ```bash
       flask --app main.py --debug run

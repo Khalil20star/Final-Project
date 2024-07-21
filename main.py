@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 import json
+import utilities
 
 app = Flask(__name__)
 
@@ -75,18 +76,13 @@ class Car:
             f.truncate()
             json.dump(cars, f, indent=4)
          
-def check_credentials(username, password):
-    with open('static/admin.json', 'r') as f:
-        users = json.load(f)
-    user = next((user for user in users if user['username'] == username and user['password'] == password), None)
-    return user is not None
 
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
     username = data.get('username') 
     password = data.get('password')
-    if check_credentials(username, password):
+    if utilities.check_credentials(username, password):
         return redirect(url_for('admin_page'))
     else:
         return jsonify({'message': 'Invalid username or password.'}), 401
