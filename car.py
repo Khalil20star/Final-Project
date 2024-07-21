@@ -1,3 +1,4 @@
+from flask import request
 import json
 class Car:
      def __init__(self,model,color,plate_number,area,rent_per_hour,rent_per_day):
